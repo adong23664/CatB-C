@@ -744,7 +744,7 @@ strong {
   DONATE              
 -----------------------------------------*/
 .donate-section {
-  background-image: url("../images/different-people-doing-volunteer-work.jpg");
+  background-image: url("../images/slide/environment.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -1254,7 +1254,7 @@ blockquote::before {
 -----------------------------------------*/
 .site-footer {
   background-color: var(--site-footer-bg-color);
-  padding-top: 70px;
+  padding-top: 30px;
 }
 
 .site-footer-bottom {
