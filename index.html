@@ -69,13 +69,14 @@
             // 清空故事內容容器
             storyDiv.innerHTML = "";
 
-            // 遍历 content 数组，逐段插入内容
+            // 遍歷content array，逐段插入内容
             data.content.forEach((section) => {
-              // 创建段落元素
+              // 創建段落元素
               const paragraph = document.createElement("p");
+              paragraph.className = "text-center featured-block-text";
               let paragraphText = section.text;
 
-              // 对每个 highlight 的词进行加粗处理
+              // 對每個 highlight 的詞進行加粗
               section.highlight.forEach((word) => {
                 const regex = new RegExp(`(${word})`, "g");
                 paragraphText = paragraphText.replace(
@@ -84,10 +85,10 @@
                 );
               });
 
-              // 将处理后的文本插入段落
+              // 將加粗後的內容插入段落
               paragraph.innerHTML = paragraphText;
 
-              // 将段落元素添加到故事内容容器中
+              // 將段落元素添加到故事内容容器中
               storyDiv.appendChild(paragraph);
             });
           } else {
