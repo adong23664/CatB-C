@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <meta name="description" content="尋找新莊便宜貓咪住宿或副都心便宜貓咪住宿？我們提供高質量的貓咪住宿服務，讓您的寵物在舒適的環境中安心度過。" />
+    <meta
+      name="description"
+      content="尋找新莊便宜貓咪住宿或副都心便宜貓咪住宿？我們提供高質量的貓咪住宿服務，讓您的寵物在舒適的環境中安心度過。"
+    />
     <meta name="author" content="CatBnC" />
 
     <title>新莊便宜貓咪住宿 | 副都心便宜貓咪住宿 - CatBnC</title>
@@ -25,6 +28,76 @@
   </head>
 
   <body id="section_1">
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+      import {
+        getFirestore,
+        doc,
+        getDoc,
+      } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAabejiknO69OWAU2OaU3iKsYWgIEawMRE",
+        authDomain: "catbnc-e583c.firebaseapp.com",
+        projectId: "catbnc-e583c",
+        storageBucket: "catbnc-e583c.appspot.com",
+        messagingSenderId: "929185190979",
+        appId: "1:929185190979:web:68c8f2d487502e570570f6",
+        measurementId: "G-X5SH7RX72T",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const docRef = doc(db, "WebContent", "OurStory");
+      getDoc(docRef)
+        .then((docSnap) => {
+          if (docSnap.exists()) {
+            const data = docSnap.data();
+            console.log(data);
+
+            // 找到標題元素並設置內容
+            const storyTitle = document.querySelector(".myTitle");
+            storyTitle.innerHTML = data.title;
+
+            // 找到故事內容的容器
+            const storyDiv = document.querySelector(".story");
+
+            // 清空故事內容容器
+            storyDiv.innerHTML = "";
+
+            // 遍历 content 数组，逐段插入内容
+            data.content.forEach((section) => {
+              // 创建段落元素
+              const paragraph = document.createElement("p");
+              let paragraphText = section.text;
+
+              // 对每个 highlight 的词进行加粗处理
+              section.highlight.forEach((word) => {
+                const regex = new RegExp(`(${word})`, "g");
+                paragraphText = paragraphText.replace(
+                  regex,
+                  "<strong>$1</strong>"
+                );
+              });
+
+              // 将处理后的文本插入段落
+              paragraph.innerHTML = paragraphText;
+
+              // 将段落元素添加到故事内容容器中
+              storyDiv.appendChild(paragraph);
+            });
+          } else {
+            console.log("No such document!");
+          }
+        })
+        .catch((error) => {
+          console.error("Error getting document:", error);
+        });
+    </script>
     <header class="site-header">
       <div class="container">
         <div class="row">
@@ -64,7 +137,11 @@
     <nav class="navbar navbar-expand-lg bg-light shadow-lg">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <img src="images/logo.png" class="logo img-fluid" alt="CatBnC - 新莊便宜貓咪住宿" />
+          <img
+            src="images/logo.png"
+            class="logo img-fluid"
+            alt="CatBnC - 新莊便宜貓咪住宿"
+          />
           <span>
             CatBnC
             <small>最安心的貓咪接案空間</small>
@@ -113,11 +190,17 @@
                 aria-labelledby="navbarLightDropdownMenuLink"
               >
                 <li>
-                  <a class="dropdown-item" href="new-taipei-cheap-cat-lodging.html">住宿</a>
+                  <a
+                    class="dropdown-item"
+                    href="new-taipei-cheap-cat-lodging.html"
+                    >住宿</a
+                  >
                 </li>
 
                 <li>
-                  <a class="dropdown-item" href="new-taipei-cheap-cat-bath.html">美容(暫定)</a>
+                  <a class="dropdown-item" href="new-taipei-cheap-cat-bath.html"
+                    >美容(暫定)</a
+                  >
                 </li>
               </ul>
             </li>
@@ -229,16 +312,10 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-10 col-12 text-center mx-auto">
-              <h2 class="mb-5">我們的故事</h2>
+              <h2 class="mb-5 myTitle"></h2>
             </div>
 
-            <div>
-              <p class="text-center featured-block-text">
-                <strong>CatBnC</strong>
-                是由一對充滿熱情的愛貓人士利用<strong>工作之餘</strong>，創立的專業貓咪住宿與美容工作室。我們以<strong>接案</strong>為出發點，致力於為每一位客戶提供最溫暖的服務，無論是在您<strong>出國旅遊、打工遊學，還是其他原因需要暫時安置您的貓咪</strong>，我們都會用心呵護每一隻貓咪，讓牠們感受到家的溫暖。
-                雖然我們是兼職經營的工作室，<strong>營業時間主要為晚上</strong>，但這並不影響我們對貓咪的專業性和責任感。如果您理解我們的創業理念，請安心將愛貓交託給我們。無論是日常的貓咪住宿，還是精心設計的美容服務，我們都致力於提供最專業的照顧，讓您的貓咪在我們這裡享受最好的待遇。
-              </p>
-            </div>
+            <div class="story"></div>
           </div>
         </div>
       </section>
@@ -396,7 +473,11 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-12 mb-4">
-            <img src="images/logo.png" class="logo img-fluid" alt="CatBnC - 新莊便宜貓咪住宿" />
+            <img
+              src="images/logo.png"
+              class="logo img-fluid"
+              alt="CatBnC - 新莊便宜貓咪住宿"
+            />
             <a href="#" class="custom-btn btn mt-3">回首頁</a>
           </div>
 
@@ -417,11 +498,19 @@
               </li>
 
               <li class="footer-menu-item">
-                <a href="new-taipei-cheap-cat-lodging.html" class="footer-menu-link">住宿</a>
+                <a
+                  href="new-taipei-cheap-cat-lodging.html"
+                  class="footer-menu-link"
+                  >住宿</a
+                >
               </li>
 
               <li class="footer-menu-item">
-                <a href="new-taipei-cheap-cat-bath.html" class="footer-menu-link">美容</a>
+                <a
+                  href="new-taipei-cheap-cat-bath.html"
+                  class="footer-menu-link"
+                  >美容</a
+                >
               </li>
             </ul>
           </div>
@@ -435,7 +524,6 @@
                   src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png"
                   alt="立即預約副都心便宜貓咪住宿"
                   height="36"
-               
               /></a>
             </p>
 
@@ -461,6 +549,7 @@
     </footer>
 
     <!-- JAVASCRIPT FILES -->
+    <script src="js/index.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
