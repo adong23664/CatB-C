@@ -36,8 +36,13 @@
         doc,
         getDoc,
       } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js";
+      import {
+        getStorage,
+        ref,
+        getDownloadURL,
+      } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js";
 
-      // Your web app's Firebase configuration
+      // Your web app's Firebase configuration for Firestore
       const firebaseConfig = {
         apiKey: "AIzaSyAabejiknO69OWAU2OaU3iKsYWgIEawMRE",
         authDomain: "catbnc-e583c.firebaseapp.com",
@@ -48,10 +53,26 @@
         measurementId: "G-X5SH7RX72T",
       };
 
-      // Initialize Firebase
+      // Firebase configuration for Storage
+      const storageConfig = {
+        apiKey: "AIzaSyCeguOEfQFPuXi7bNTBpzVqQcurKgSwRRU",
+        authDomain: "catbncpic.firebaseapp.com",
+        projectId: "catbncpic",
+        storageBucket: "catbncpic.appspot.com",
+        messagingSenderId: "1053848658368",
+        appId: "1:1053848658368:web:b4631f82d7dfc1ffd3e825",
+        measurementId: "G-NFFWHD2E1S",
+      };
+
+      // Initialize Firebase for Firestore
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
+      // Initialize Firebase for Storage
+      const storageApp = initializeApp(storageConfig, "storageApp");
+      const storage = getStorage(storageApp);
+
+      // Firestore: Fetch and display content
       const docRef = doc(db, "WebContent", "OurStory");
       getDoc(docRef)
         .then((docSnap) => {
@@ -59,24 +80,22 @@
             const data = docSnap.data();
             console.log(data);
 
-            // 找到標題元素並設置內容
+            // Update title content
             const storyTitle = document.querySelector(".myTitle");
             storyTitle.innerHTML = data.title;
 
-            // 找到故事內容的容器
+            // Update story content
             const storyDiv = document.querySelector(".story");
+            storyDiv.innerHTML = ""; // Clear previous content
 
-            // 清空故事內容容器
-            storyDiv.innerHTML = "";
-
-            // 遍歷content array，逐段插入内容
+            // Iterate through content and display
             data.content.forEach((section) => {
-              // 創建段落元素
               const paragraph = document.createElement("p");
               paragraph.className = "text-center featured-block-text";
+
               let paragraphText = section.text;
 
-              // 對每個 highlight 的詞進行加粗
+              // Bold each highlighted word
               section.highlight.forEach((word) => {
                 const regex = new RegExp(`(${word})`, "g");
                 paragraphText = paragraphText.replace(
@@ -85,10 +104,7 @@
                 );
               });
 
-              // 將加粗後的內容插入段落
               paragraph.innerHTML = paragraphText;
-
-              // 將段落元素添加到故事内容容器中
               storyDiv.appendChild(paragraph);
             });
           } else {
@@ -98,6 +114,28 @@
         .catch((error) => {
           console.error("Error getting document:", error);
         });
+      // Function to fetch and set image URL
+      function setImageFromStorage(imageRef, className) {
+        getDownloadURL(imageRef)
+          .then((url) => {
+            const imgElement = document.querySelector(`img.${className}`);
+            if (imgElement) {
+              imgElement.src = url;
+            }
+          })
+          .catch((error) => {
+            console.error(`Error getting ${className} image URL:`, error);
+          });
+      }
+
+      // Storage: Fetch and set image URLs
+      const bathImageRef = ref(storage, "bath.jpg");
+      const environmentImageRef = ref(storage, "environment.jpg");
+      const equipmentImageRef = ref(storage, "equipment.jpg");
+
+      setImageFromStorage(bathImageRef, "bath");
+      setImageFromStorage(environmentImageRef, "environment");
+      setImageFromStorage(equipmentImageRef, "equipment");
     </script>
     <header class="site-header">
       <div class="container">
@@ -231,8 +269,7 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <img
-                      src="images/slide/environment.jpg"
-                      class="carousel-image img-fluid"
+                      class="carousel-image img-fluid environment"
                       alt="新莊便宜貓咪住宿環境"
                     />
 
@@ -247,8 +284,7 @@
 
                   <div class="carousel-item">
                     <img
-                      src="images/slide/equipment.jpg"
-                      class="carousel-image img-fluid"
+                      class="carousel-image img-fluid equipment"
                       alt="副都心便宜貓咪住宿設備"
                     />
 
@@ -263,8 +299,7 @@
 
                   <div class="carousel-item">
                     <img
-                      src="images/slide/bath.jpg"
-                      class="carousel-image img-fluid"
+                      class="carousel-image img-fluid bath"
                       alt="新莊便宜貓咪美容"
                     />
 
@@ -550,12 +585,13 @@
     </footer>
 
     <!-- JAVASCRIPT FILES -->
-    <script src="js/index.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.sticky.js"></script>
     <script src="js/click-scroll.js"></script>
     <script src="js/counter.js"></script>
     <script src="js/custom.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-storage.js"></script>
   </body>
 </html>
