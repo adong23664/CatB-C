@@ -30,6 +30,7 @@
   <body id="section_1">
     <!-- 引用 index.js -->
     <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/catLife.js"></script>
     <header class="site-header">
       <div class="container">
         <div class="row">
@@ -95,15 +96,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#top">首頁</a>
+              <a class="nav-link click-scroll" href="index.html">首頁</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#section_2">入住規範</a>
+              <a class="nav-link click-scroll" href="index.html#section_2"
+                >入住規範</a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link click-scroll" href="#section_3">接送服務</a>
+              <a class="nav-link click-scroll" href="index.html#section_3"
+                >接送服務</a
+              >
             </li>
 
             <li class="nav-item">
@@ -155,199 +160,9 @@
 
     <main>
       <section class="hero-section hero-section-full-height">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12 col-12 p-0">
-              <div
-                id="hero-slide"
-                class="carousel carousel-fade slide"
-                data-bs-ride="carousel"
-              >
-                <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img
-                      class="carousel-image img-fluid environment"
-                      alt="新莊便宜貓咪住宿環境"
-                    />
-
-                    <div
-                      class="carousel-caption d-flex flex-column justify-content-end"
-                    >
-                      <h1>環境</h1>
-
-                      <p>乾淨，舒適，大空間</p>
-                    </div>
-                  </div>
-
-                  <div class="carousel-item">
-                    <img
-                      class="carousel-image img-fluid equipment"
-                      alt="副都心便宜貓咪住宿設備"
-                    />
-
-                    <div
-                      class="carousel-caption d-flex flex-column justify-content-end"
-                    >
-                      <h1>設備</h1>
-
-                      <p>智慧寵物餵食器，智慧寵物飲水機</p>
-                    </div>
-                  </div>
-
-                  <div class="carousel-item">
-                    <img
-                      class="carousel-image img-fluid bath"
-                      alt="新莊便宜貓咪美容"
-                    />
-
-                    <div
-                      class="carousel-caption d-flex flex-column justify-content-end"
-                    >
-                      <h1>美容</h1>
-
-                      <p>平價洗澡服務</p>
-                    </div>
-                  </div>
-                </div>
-
-                <button
-                  class="carousel-control-prev"
-                  type="button"
-                  data-bs-target="#hero-slide"
-                  data-bs-slide="prev"
-                >
-                  <span
-                    class="carousel-control-prev-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-
-                <button
-                  class="carousel-control-next"
-                  type="button"
-                  data-bs-target="#hero-slide"
-                  data-bs-slide="next"
-                >
-                  <span
-                    class="carousel-control-next-icon"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-padding">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-10 col-12 text-center mx-auto">
-              <h2 class="mb-5 myTitle"></h2>
-            </div>
-
-            <div class="story"></div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-padding section-bg" id="section_2">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 col-12">
-              <div class="custom-text-box">
-                <h2 class="mb-2">入住規範</h2>
-                <div class="container mt-5">
-                  <ul class="list-group" id="stay-rules-list"></ul>
-                </div>
-                <div class="custom-text-box mb-lg-0">
-                  <table class="table table-striped table-bordered table-hover">
-                    <colgroup>
-                      <col style="width: 20%" />
-                      <col style="width: 80%" />
-                    </colgroup>
-                    <thead class="table-primary">
-                      <tr>
-                        <th scope="col">項目</th>
-                        <th scope="col">說明</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">住宿＆退房</th>
-                        <td>
-                          每日顧店時間為晚上, 請提前預約入住及退房時間,
-                          可預約時間為一到五晚上七點至十點, 六日10:00~17:00,
-                          另外週一週五白天也可討論入住退房時間。如一定要在周二三四白天入住的喵客,
-                          需提前安排人員支援, 加收400。
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">特殊假日</th>
-                        <td>
-                          連續假期因館內貓咪較多，故住宿只收3晚以上。端午/中秋 -
-                          小貓別墅1貓/晚 700, 寬敞別墅1貓/晚 800。春節 -
-                          需住滿五晚, 小貓別墅1貓/晚 1200, 寬敞別墅1貓/晚 1400。
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">預約制</th>
-                        <td>全採用預約制，貓咪住宿需提前2至3天Line預約。</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">訂金支付</th>
-                        <td>
-                          須於確定住宿後閱讀定型化契約簽名後, 先支付30%訂金,
-                          即可保留訂位, 剩餘70%尾款於入住當天結清。
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section-padding" id="section_3">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12 col-md-12 col-12">
-              <div class="custom-text-box">
-                <h2 class="mb-2">接送服務</h2>
-                <div class="custom-text-box mb-lg-0">
-                  <table class="table table-striped table-bordered table-hover">
-                    <thead class="table-primary">
-                      <tr>
-                        <th scope="col">住宿天數</th>
-                        <th scope="col">接送服務</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">十天以上</th>
-                        <td>住宿十天以上的貓咪北北基桃, 附一趟來回接送</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">十天以下</th>
-                        <td>
-                          0-5公里, 單趟接貓來住100<br />
-                          5-10公里, 單趟接貓來住200<br />
-                          10-15公里, 單趟接貓來住300<br />
-                          15-20公里, 單趟接貓來住400<br />
-                          20-25公里, 單趟接貓來住500<br />
-                          25公里以上, 單趟接貓來住600<br />
-                          若有送回需求, 價位比照接貓入住
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
+          <div class="row" id="pet-cards-container">
+            <!-- 卡片將動態插入到這裡 -->
           </div>
         </div>
       </section>
