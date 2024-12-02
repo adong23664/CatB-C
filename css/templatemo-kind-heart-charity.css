@@ -1634,3 +1634,55 @@ blockquote::before {
     padding: 25px;
   }
 }
+.fixed-contact {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1000;
+}
+
+.contact-button {
+  display: flex;
+  flex-direction: column; /* 垂直排列 */
+  align-items: center; /* 水平居中 */
+  justify-content: center; /* 垂直居中 */
+  background: #ffffff;
+  border: 2px solid #000000; /* 黑色邊框 */
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 8px; /* 減少水平和垂直內邊距 */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: auto; /* 自適應內容寬度 */
+  max-width: 80px; /* 控制最大寬度 */
+}
+
+.contact-icon {
+  font-size: 24px; /* 圖標大小 */
+  margin-bottom: 5px; /* 圖標和文字的間距 */
+  color: #000000; /* 黑色圖標 */
+}
+
+.contact-text {
+  writing-mode: vertical-rl; /* 設置為直書 */
+  text-orientation: upright; /* 文字直立 */
+  font-size: 16px; /* 字體大小 */
+  font-weight: bold; /* 加粗字體 */
+  color: #000000; /* 黑色文字 */
+  text-align: center; /* 文字居中 */
+}
+
+.contact-button:hover {
+  background: #f8f9fa; /* 懸停背景變化 */
+  border-color: #5bc1ac; /* 懸停邊框顏色變化 */
+  color: #5bc1ac; /* 懸停文字顏色變化 */
+}
+
+.contact-icon:hover {
+  color: #5bc1ac; /* 懸停圖標顏色變化 */
+}
+
+.contact-button:hover .contact-text {
+  color: #5bc1ac; /* 懸停文字顏色變化 */
+}
