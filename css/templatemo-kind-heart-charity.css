@@ -88,13 +88,13 @@ body {
   TYPOGRAPHY               
 -----------------------------------------*/
 
-/* h2,
+h2,
 h3,
 h4,
 h5,
 h6 {
   color: var(--dark-color);
-} */
+}
 
 h1,
 h2,
@@ -562,6 +562,20 @@ strong {
   min-height: 680px;
 }
 
+#hero-slide .carousel-caption {
+  background: var(--white-color);
+  clip-path: polygon(100% 100%, 100% 150px, 0 100%);
+  color: var(--secondary-color);
+  top: 1px;
+  bottom: -1px;
+  right: 0;
+  left: auto;
+  text-align: right;
+  min-width: 680px;
+  min-height: 680px;
+  padding: 100px 100px 50px 100px;
+}
+
 .custom-caption h3 {
   position: absolute;
   top: 50%;
@@ -948,6 +962,13 @@ blockquote::before {
   right: -80px;
   width: 350px;
   height: 350px;
+}
+
+#testimonial-carousel .carousel-caption {
+  position: relative;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 #testimonial-carousel .carousel-title {
@@ -1496,6 +1517,10 @@ blockquote::before {
     height: 200px;
   }
 
+  #testimonial-carousel .carousel-caption {
+    padding-top: 0;
+  }
+
   blockquote {
     padding: 70px 30px 30px 30px;
   }
@@ -1552,32 +1577,14 @@ blockquote::before {
   .hero-section-full-height,
   #hero-slide .carousel-item,
   .carousel-image {
-    min-height: 400px; /* 減少高度，讓內容更緊湊 */
+    min-height: 520px;
   }
 
   #hero-slide .carousel-caption {
-    /* 去掉裁剪 */
-    clip-path: none;
-
-    /* 移除不必要的內距 */
-    padding-right: 10px;
-
-    /* 調整寬高自適應 */
-    min-width: auto;
-    min-height: auto;
-
-    /* 文字區塊居中 */
-    position: absolute;
-    top: 50%; /* 垂直居中 */
-    left: 50%; /* 水平居中 */
-    transform: translate(-50%, -50%);
-    background-color: rgba(91, 193, 172, 0.7); /* 半透明背景 */
-    color: #fff; /* 白色文字 */
-    padding: 10px 15px; /* 調整內距 */
-    border-radius: 8px; /* 圓角 */
-    text-align: center;
-    font-size: 0.9rem; /* 縮小文字大小 */
-    max-width: 90%; /* 限制寬度 */
+    clip-path: polygon(100% 100%, 100% 100px, 0 100%);
+    padding-right: 50px;
+    min-width: inherit;
+    min-height: inherit;
   }
 }
 
@@ -1600,6 +1607,11 @@ blockquote::before {
 
   h5 {
     font-size: 20px;
+  }
+
+  #hero-slide .carousel-caption {
+    min-width: inherit;
+    padding-bottom: 30px;
   }
 
   .carousel-control-next-icon,
