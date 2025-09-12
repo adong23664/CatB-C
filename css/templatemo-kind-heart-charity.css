@@ -47,12 +47,12 @@ https://templatemo.com/tm-581-kind-heart-charity
 -----------------------------------------*/
 :root {
   --white-color: #ffffff;
-  --primary-color: #5bc1ac;
+  --primary-color: #5ba1c1;
   --secondary-color: #5a6f80;
   --section-bg-color: #f0f8ff;
   --site-footer-bg-color: #44525d;
   --custom-btn-bg-color: #597081;
-  --custom-btn-bg-hover-color: #5bc1ac;
+  --custom-btn-bg-hover-color: #5ba1c1;
   --dark-color: #000000;
   --p-color: #717275;
   --border-color: #e9eaeb;
@@ -1691,14 +1691,31 @@ blockquote::before {
 
 .contact-button:hover {
   background: #f8f9fa;
-  border-color: #5bc1ac;
-  color: #5bc1ac;
+  border-color: #5ba1c1;
+  color: #5ba1c1;
 }
 
 .contact-icon:hover {
-  color: #5bc1ac;
+  color: #5ba1c1;
 }
 
 .contact-button:hover .contact-text {
-  color: #5bc1ac;
+  color: #5ba1c1;
+}
+
+.story-container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  color: #333;
+  padding: 2rem 1rem;
+}
+
+.circle-logo {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
 }
